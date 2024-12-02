@@ -85,6 +85,12 @@
             text-align: center;
         }
 
+        .project img {
+            width: 100%;
+            height: auto;
+            border: 2px solid red;
+        }
+
         .contact-form {
             padding: 1rem;
             margin-top: 2rem;
@@ -117,59 +123,111 @@
             border: none;
             cursor: pointer;
         }
+
+        .calculator {
+            padding: 1rem;
+            background-color: black;
+            color: red;
+            border: 2px solid red;
+            margin: 2rem auto;
+            width: 50%;
+            text-align: center;
+        }
+
+        .calculator input,
+        .calculator button {
+            margin: 0.5rem;
+            padding: 0.5rem;
+            border: 1px solid red;
+            background-color: black;
+            color: red;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Header & Navigation -->
     <header>
         <h1>Affordable Housing Tracker</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Calculator</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#calculator">Calculator</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>Welcome to Affordable Housing</h1>
-            <p>Your one-stop solution for affordable housing options!</p>
-            <button>Explore Projects</button>
-        </section>
+    <!-- Home Page (Hero Section) -->
+    <section id="home" class="hero">
+        <h1>Welcome to Affordable Housing</h1>
+        <p>Your one-stop solution for affordable housing options!</p>
+        <button>Explore Projects</button>
+    </section>
 
-        <!-- Featured Projects -->
-        <section class="featured-projects">
-            <h2>Featured Projects</h2>
-            <div class="projects">
-                <div class="project">
-                    <h3>Green Valley Homes</h3>
-                    <p>Location: Nairobi</p>
-                    <p>Price: KES 2,500,000</p>
-                </div>
-                <div class="project">
-                    <h3>Sunrise Apartments</h3>
-                    <p>Location: Mombasa</p>
-                    <p>Price: KES 3,000,000</p>
-                </div>
+    <!-- Featured Projects Section -->
+    <section id="projects" class="featured-projects">
+        <h2>Featured Projects</h2>
+        <div class="projects">
+            <div class="project">
+                <h3>Green Valley Homes</h3>
+                <img src="https://via.placeholder.com/300" alt="Project Image">
+                <p>Location: Nairobi</p>
+                <p>Price: KES 2,500,000</p>
+                <button>View Details</button>
             </div>
-        </section>
+            <div class="project">
+                <h3>Sunrise Apartments</h3>
+                <img src="https://via.placeholder.com/300" alt="Project Image">
+                <p>Location: Mombasa</p>
+                <p>Price: KES 3,000,000</p>
+                <button>View Details</button>
+            </div>
+        </div>
+    </section>
 
-        <!-- Contact Form -->
-        <section class="contact-form">
-            <h2>Contact Us</h2>
-            <form>
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" placeholder="Enter your name">
-                <label for="email">Your Email:</label>
-                <input type="email" id="email" placeholder="Enter your email">
-                <label for="message">Your Message:</label>
-                <input type="text" id="message" placeholder="Enter your message">
-                <button type="submit">Submit</button>
-            </form>
-        </section>
-    </main>
+    <!-- Mortgage Calculator Section -->
+    <section id="calculator" class="calculator">
+        <h2>Mortgage Calculator</h2>
+        <label for="income">Monthly Income (KES):</label>
+        <input type="number" id="income" placeholder="Enter your income">
+        
+        <label for="loan-duration">Loan Duration (Years):</label>
+        <input type="number" id="loan-duration" placeholder="Enter duration in years">
+        
+        <button onclick="calculateMortgage()">Calculate</button>
+        
+        <h3 id="result"></h3>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact-form">
+        <h2>Contact Us</h2>
+        <form>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" placeholder="Enter your email">
+            <label for="message">Your Message:</label>
+            <input type="text" id="message" placeholder="Enter your message">
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <script>
+        function calculateMortgage() {
+            let income = document.getElementById("income").value;
+            let duration = document.getElementById("loan-duration").value;
+            
+            if (income && duration) {
+                let result = (income * 0.3 * duration).toFixed(2);  // Simple calculation for demo
+                document.getElementById("result").innerHTML = `Estimated Loan: KES ${result}`;
+            } else {
+                document.getElementById("result").innerHTML = `Please enter valid values for both fields.`;
+            }
+        }
+    </script>
+
 </body>
 </html>
